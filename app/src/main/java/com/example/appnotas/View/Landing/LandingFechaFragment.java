@@ -3,10 +3,12 @@ package com.example.appnotas.View.Landing;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.appnotas.R;
 
@@ -19,7 +21,17 @@ public class LandingFechaFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_landing_fecha, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_landing_contrasena, container, false);
+
+        Button btnContrasena = (Button) rootView.findViewById(R.id.btnContrasena);
+
+        btnContrasena.setOnClickListener(v ->{
+            LandingFechaFragment fechaFragment = new LandingFechaFragment();
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragmentContainerLanding, fechaFragment);
+            transaction.commit();
+        });
+
+        return rootView;
     }
 }
