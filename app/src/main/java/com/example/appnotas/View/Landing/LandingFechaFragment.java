@@ -9,27 +9,42 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.appnotas.R;
+import com.example.appnotas.ViewModel.LandingViewModel;
 
 public class LandingFechaFragment extends Fragment {
 
-    public LandingFechaFragment() {
-        // Required empty public constructor
+    private LandingViewModel viewModel;
+
+    public LandingFechaFragment(LandingViewModel viewModel) {
+        this.viewModel = viewModel;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_landing_contrasena, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_landing_fecha, container, false);
 
-        Button btnContrasena = (Button) rootView.findViewById(R.id.btnContrasena);
+        Button btnFecha = (Button) rootView.findViewById(R.id.btnFecha);
+        EditText editFecha = (EditText) rootView.findViewById(R.id.editFecha);
 
-        btnContrasena.setOnClickListener(v ->{
-            LandingFechaFragment fechaFragment = new LandingFechaFragment();
-            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragmentContainerLanding, fechaFragment);
-            transaction.commit();
+        btnFecha.setOnClickListener(v ->{
+            String fecha = editFecha.getText().toString();
+
+            if (fecha.isEmpty()) {
+                Toast.makeText(getContext(), "El fecha de nacimiento es obligatorio", Toast.LENGTH_SHORT).show();
+            } else {
+                viewModel.setFechaNacimiento(fecha);
+                viewModel.guardarUsuario(getContext());
+
+                LandingFinalFragment finalFragment = new LandingFinalFragment();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragmentContainerLanding, finalFragment);
+                transaction.commit();
+            }
         });
 
         return rootView;

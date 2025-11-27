@@ -9,13 +9,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.appnotas.R;
+import com.example.appnotas.ViewModel.LandingViewModel;
 
 public class LandingContrasenaFragment extends Fragment {
 
-    public LandingContrasenaFragment() {
-        // Required empty public constructor
+    private LandingViewModel viewModel;
+
+    public LandingContrasenaFragment(LandingViewModel viewModel) {
+        this.viewModel = viewModel;
     }
 
     @Override
@@ -24,12 +29,20 @@ public class LandingContrasenaFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_landing_contrasena, container, false);
 
         Button btnContrasena = (Button) rootView.findViewById(R.id.btnContrasena);
+        EditText editContrasena = (EditText) rootView.findViewById(R.id.editContrasena);
 
         btnContrasena.setOnClickListener(v ->{
-            LandingFechaFragment fechaFragment = new LandingFechaFragment();
-            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragmentContainerLanding, fechaFragment);
-            transaction.commit();
+            String contrasena = editContrasena.getText().toString();
+            if (contrasena.isEmpty()) {
+                Toast.makeText(getContext(), "El contraseña es obligatorio", Toast.LENGTH_SHORT).show();
+            } else {
+                viewModel.setContrasena(contrasena);
+
+                LandingFechaFragment fechaFragment = new LandingFechaFragment(viewModel);
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragmentContainerLanding, fechaFragment);
+                transaction.commit();
+            }
         });
 
         return rootView;

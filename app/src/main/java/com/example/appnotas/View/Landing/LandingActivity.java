@@ -1,6 +1,5 @@
 package com.example.appnotas.View.Landing;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,7 +15,6 @@ import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.appnotas.View.GeneralActivity;
-import com.example.appnotas.ViewModel.LandingController;
 import com.example.appnotas.R;
 
 public class LandingActivity extends AppCompatActivity {
@@ -44,10 +42,10 @@ public class LandingActivity extends AppCompatActivity {
 
 
         btnAcceder.setOnClickListener(v -> {
-
             if (esPrimeraVez()) {
                 btnAcceder.setVisibility(View.GONE);
                 fragmentContainerLanding.setVisibility(View.VISIBLE);
+
                 LandingNombreFragment nombreFragment = new LandingNombreFragment();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragmentContainerLanding, nombreFragment);
@@ -64,7 +62,8 @@ public class LandingActivity extends AppCompatActivity {
         boolean esPrimeraVez = prefs.getBoolean(KEY_PRIMERA_VEZ, true);
 
         if(esPrimeraVez){
-            prefs.edit().putBoolean(KEY_PRIMERA_VEZ, false).apply();
+            //PARA PRUEBAS, DESPUES CAMBIAR "(KEY_PRIMERA_VEZ, false)"
+            prefs.edit().putBoolean(KEY_PRIMERA_VEZ, true).apply();
         }
         return esPrimeraVez;
 
