@@ -35,7 +35,7 @@ public class LandingFechaFragment extends Fragment {
             String fecha = editFecha.getText().toString();
 
             if (fecha.isEmpty()) {
-                Toast.makeText(getContext(), "El fecha de nacimiento es obligatorio", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "El año de nacimiento es obligatorio", Toast.LENGTH_SHORT).show();
             } else {
                 viewModel.setFechaNacimiento(fecha);
                 viewModel.guardarUsuario(getContext());
