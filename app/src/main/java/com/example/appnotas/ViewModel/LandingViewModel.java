@@ -5,8 +5,10 @@ import android.util.Log;
 
 import com.example.appnotas.Model.Usuario;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -56,6 +58,38 @@ public class LandingViewModel {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public Usuario leerUsuario(Context context) {
+        File carpeta = new File(context.getFilesDir(), "USUARIO");
+        File archivo = new File(carpeta, "datos.cas");
+
+        Usuario usuario = new Usuario();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+            while ((linea = br.readLine()) != null){
+                if (linea.startsWith("Nombre:")) {
+                    String nombreCifrado = linea.replace("Nombre:", "").trim();
+                    usuario.setNombre(descifrar(nombreCifrado));
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return usuario;
+    }
+
+    private String descifrar(String texto) {
+        char[] letras = texto.toCharArray();
+        String resultado = "";
+        for (int i = 0; i < letras.length; i++) {
+            char original = (char)(letras[i] - 1);
+            resultado += original;
+        }
+        return resultado;
     }
 
 

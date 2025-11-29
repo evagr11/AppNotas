@@ -52,76 +52,74 @@
         app:layout_constraintTop_toBottomOf="@+id/view">
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chipCerrado2"
+            android:id="@+id/chip1"
             android:layout_width="wrap_content"
-            android:layout_height="37dp"
+            android:layout_height="35dp"
             android:layout_weight="1"
             android:checkable="true"
             android:textColor="#FFFFFF"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:chipBackgroundColor="@color/Color1" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chipCerrado"
+            android:id="@+id/chip2"
             android:layout_width="wrap_content"
-            android:layout_height="37dp"
+            android:layout_height="35dp"
             android:layout_weight="1"
             android:checkable="true"
             android:textColor="#FFFFFF"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:chipBackgroundColor="@color/Color2" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chipCerrado5"
+            android:id="@+id/chip3"
             android:layout_width="wrap_content"
-            android:layout_height="37dp"
+            android:layout_height="35dp"
             android:layout_weight="1"
             android:checkable="true"
             android:textColor="#FFFFFF"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:chipBackgroundColor="@color/Color3" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chipCerrado6"
+            android:id="@+id/chip4"
             android:layout_width="wrap_content"
-            android:layout_height="37dp"
+            android:layout_height="35dp"
             android:layout_weight="1"
             android:checkable="true"
             android:textColor="#FFFFFF"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:chipBackgroundColor="@color/Color4" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chipCerrado7"
+            android:id="@+id/chip5"
             android:layout_width="wrap_content"
-            android:layout_height="37dp"
+            android:layout_height="35dp"
             android:layout_weight="1"
             android:checkable="true"
             android:textColor="#FFFFFF"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:chipBackgroundColor="@color/Color5" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chipCerrado8"
+            android:id="@+id/chip6"
             android:layout_width="wrap_content"
-            android:layout_height="37dp"
+            android:layout_height="35dp"
             android:layout_weight="1"
             android:checkable="true"
             android:textColor="#FFFFFF"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:chipBackgroundColor="@color/Color6" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chipCerrado3"
+            android:id="@+id/chip7"
             android:layout_width="wrap_content"
-            android:layout_height="37dp"
+            android:layout_height="35dp"
             android:layout_weight="1"
             android:checkable="true"
             android:textColor="#FFFFFF"
-            android:textStyle="bold" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipCerrado4"
-            android:layout_width="wrap_content"
-            android:layout_height="37dp"
-            android:layout_weight="1"
-            android:checkable="true"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:chipBackgroundColor="@color/Color7" />
 
     </LinearLayout>
 
@@ -129,9 +127,11 @@
         android:id="@+id/listView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="6dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="15dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -144,7 +144,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="no hay notas disponibles"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -208,25 +208,35 @@
         android:id="@+id/button"
         android:layout_width="64dp"
         android:layout_height="34dp"
+        android:layout_marginEnd="7dp"
         android:text="Escribir nota"
-        tools:layout_editor_absoluteX="19dp"
-        tools:layout_editor_absoluteY="50dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="64dp"
         android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="19dp"
         android:text="Opciones"
-        tools:layout_editor_absoluteX="90dp"
-        tools:layout_editor_absoluteY="50dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="64dp"
         android:layout_height="34dp"
+        android:layout_marginStart="15dp"
         android:text="Aleatoria"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="50dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
