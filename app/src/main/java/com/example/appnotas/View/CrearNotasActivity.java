@@ -86,7 +86,7 @@ public class CrearNotasActivity extends AppCompatActivity {
         String descripcion = txtDescripcionEdit.getText().toString().trim();
 
         if(titulo.isEmpty() && descripcion.isEmpty()){
-            Toast.makeText(this, "No hay alertas disponibles aún", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Escribe un título o una descripción", Toast.LENGTH_SHORT).show();
             return;
         }
 

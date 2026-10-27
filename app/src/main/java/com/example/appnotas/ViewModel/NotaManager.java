@@ -49,10 +49,21 @@ public class NotaManager {
         }
     }
 
+    // El id de una nota nueva es el mayor id que ya exista más uno (nota1.not, nota2.not...)
     private int obtenerSiguienteId(File carpeta){
-        File[] archivos = carpeta.listFiles();
-        if(archivos.length == 0) return 1;
-        return archivos.length + 1;
-
+        if (!carpeta.exists()) carpeta.mkdir();
+        File[] archivos = carpeta.listFiles((dir, nombre) -> nombre.startsWith("nota") && nombre.endsWith(".not"));
+        int mayor = 0;
+        if (archivos != null) {
+            for (File archivo : archivos) {
+                String numero = archivo.getName().replace("nota", "").replace(".not", "");
+                try {
+                    mayor = Math.max(mayor, Integer.parseInt(numero));
+                } catch (NumberFormatException e) {
+                    // nombre inesperado: se ignora
+                }
+            }
+        }
+        return mayor + 1;
     }
 }

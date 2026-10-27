@@ -1,5 +1,6 @@
 package com.example.appnotas.View.Landing;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -39,6 +40,9 @@ public class LandingFechaFragment extends Fragment {
             } else {
                 viewModel.setFechaNacimiento(fecha);
                 viewModel.guardarUsuario(getContext());
+                // A partir de ahora la app entra directamente a las notas
+                getContext().getSharedPreferences(LandingActivity.PREFS_APP, Context.MODE_PRIVATE)
+                        .edit().putBoolean(LandingActivity.KEY_PRIMERA_VEZ, false).apply();
 
                 LandingFinalFragment finalFragment = new LandingFinalFragment();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();

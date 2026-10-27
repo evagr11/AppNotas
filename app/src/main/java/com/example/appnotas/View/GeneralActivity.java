@@ -114,7 +114,8 @@ public class GeneralActivity extends AppCompatActivity {
         listaFiltrada.clear();
 
         File carpeta = new File(getFilesDir(), "USUARIO");
-        File[] archivos = carpeta.listFiles();
+        // Solo los ficheros de notas (.not); en la carpeta también está datos.cas con el usuario
+        File[] archivos = carpeta.listFiles((dir, nombre) -> nombre.endsWith(".not"));
 
         if (archivos != null) {
             for (int i = 0; i < archivos.length; i++) {
@@ -125,7 +126,7 @@ public class GeneralActivity extends AppCompatActivity {
                     String[] partes = linea.split("\\|");
 
                     String titulo = partes[0].trim();
-                    String descripcion = partes[1].trim();
+                    String descripcion = partes[1].trim().replace("\\n", "\n");
                     String colorStr = partes[2].trim();
                     int id = Integer.parseInt(partes[3].trim());
 
@@ -162,6 +163,7 @@ public class GeneralActivity extends AppCompatActivity {
             listaFiltrada.addAll(listaNotas);
             adapter.notifyDataSetChanged();
         }
+        noNotas.setVisibility(listaFiltrada.isEmpty() ? View.VISIBLE : View.GONE);
     }
 
 

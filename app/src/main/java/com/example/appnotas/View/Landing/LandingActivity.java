@@ -61,10 +61,6 @@ public class LandingActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences(PREFS_APP, MODE_PRIVATE);
         boolean esPrimeraVez = prefs.getBoolean(KEY_PRIMERA_VEZ, true);
 
-        if(esPrimeraVez){
-            //PARA PRUEBAS, DESPUES CAMBIAR "(KEY_PRIMERA_VEZ, false)"
-            prefs.edit().putBoolean(KEY_PRIMERA_VEZ, true).apply();
-        }
         return esPrimeraVez;
 
     }

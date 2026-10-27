@@ -54,7 +54,7 @@ public class LandingViewModel {
             writer.write(datos.toString());
             writer.close();
 
-            Log.d("LandingViewModel", datos);
+            Log.d("LandingViewModel", "Usuario guardado");
         } catch (IOException e) {
             e.printStackTrace();
         }

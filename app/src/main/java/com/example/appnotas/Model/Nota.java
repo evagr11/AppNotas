@@ -45,11 +45,18 @@ public class Nota {
         this.color = color;
     }
 
+    // Formato del fichero: titulo | descripcion | color | id (todo en una línea).
+    // Los saltos de línea se guardan como "\\n" para que una descripción de varias
+    // líneas no rompa la lectura, y la barra "|" se cambia por "/" porque es el separador.
     @Override
     public String toString() {
-        return titulo + " | " +
-                descripcion + " | " +
+        return limpiar(titulo) + " | " +
+                limpiar(descripcion) + " | " +
                 color + " | " +
                 id;
+    }
+
+    private static String limpiar(String texto) {
+        return texto.replace("|", "/").replace("\r", "").replace("\n", "\\n");
     }
 }
