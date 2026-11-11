@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -22,7 +24,8 @@ public class CrearNotasActivity extends AppCompatActivity {
 
     private EditText txtTituloEdit, txtDescripcionEdit;
     private Chip chip1, chip2, chip3, chip4, chip5, chip6, chip7;
-    private Button btnEnviar, btnBack;
+    private Button btnEnviar;
+    private ImageButton btnBack;
     private int notaId = 0;
     private boolean esEdicion = false;
 
@@ -53,6 +56,8 @@ public class CrearNotasActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (getIntent().hasExtra("id")) {
             esEdicion = true;
+            TextView tituloPantalla = findViewById(R.id.txtTituloPantalla);
+            tituloPantalla.setText(R.string.editar_nota);
             notaId = intent.getIntExtra("id", 0);
             txtTituloEdit.setText(intent.getStringExtra("titulo"));
             txtDescripcionEdit.setText(intent.getStringExtra("descripcion"));

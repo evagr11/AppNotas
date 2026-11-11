@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.example.appnotas.Model.ColorNota;
 import com.example.appnotas.Model.Nota;
 import com.example.appnotas.R;
 
@@ -34,32 +35,22 @@ public class NotaAdapter extends ArrayAdapter<Nota> {
 
         ConstraintLayout fondo = itemView.findViewById(R.id.itemNotaLayout);
 
-        switch (nota.getColor()) {
-            case Color1:
-                fondo.setBackgroundResource(R.drawable.rectangulo_fondo_lista);
-                break;
-            case Color2:
-                fondo.setBackgroundResource(R.drawable.rectangulo_fondo_lista2);
-                break;
-            case Color3:
-                fondo.setBackgroundResource(R.drawable.rectangulo_fondo_lista3);
-                break;
-            case Color4:
-                fondo.setBackgroundResource(R.drawable.rectangulo_fondo_lista4);
-                break;
-            case Color5:
-                fondo.setBackgroundResource(R.drawable.rectangulo_fondo_lista5);
-                break;
-            case Color6:
-                fondo.setBackgroundResource(R.drawable.rectangulo_fondo_lista6);
-                break;
-            case Color7:
-                fondo.setBackgroundResource(R.drawable.rectangulo_fondo_lista7);
-                break;
-        }
-
-
+        fondo.setBackgroundResource(fondoDe(nota.getColor()));
 
         return itemView;
     }
+
+    // Fondo redondeado que corresponde a cada color (también lo usa la nota aleatoria)
+    public static int fondoDe(ColorNota color) {
+        switch (color) {
+            case Color2: return R.drawable.rectangulo_fondo_lista2;
+            case Color3: return R.drawable.rectangulo_fondo_lista3;
+            case Color4: return R.drawable.rectangulo_fondo_lista4;
+            case Color5: return R.drawable.rectangulo_fondo_lista5;
+            case Color6: return R.drawable.rectangulo_fondo_lista6;
+            case Color7: return R.drawable.rectangulo_fondo_lista7;
+            default: return R.drawable.rectangulo_fondo_lista;
+        }
+    }
+
 }

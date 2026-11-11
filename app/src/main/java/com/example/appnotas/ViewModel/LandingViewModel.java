@@ -92,5 +92,31 @@ public class LandingViewModel {
         return resultado;
     }
 
+    // Cambia solo el nombre: la contraseña y la fecha se quedan como estaban en datos.cas
+    public boolean cambiarNombre(Context context, String nuevoNombre) {
+        File archivo = new File(new File(context.getFilesDir(), "USUARIO"), "datos.cas");
+        StringBuilder datos = new StringBuilder();
 
+        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                if (linea.startsWith("Nombre:")) {
+                    datos.append("Nombre: ").append(cifrar(nuevoNombre)).append("\n");
+                } else {
+                    datos.append(linea).append("\n");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        try (FileWriter writer = new FileWriter(archivo)) {
+            writer.write(datos.toString());
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

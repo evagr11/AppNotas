@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppNotas">
         <activity
+            android:name=".View.OpcionesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.NotaAleatoriaActivity"
+            android:exported="false" />
+        <activity
             android:name=".View.CrearNotasActivity"
             android:exported="false" />
         <activity

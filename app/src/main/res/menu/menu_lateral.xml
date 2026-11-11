@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/menuEscribir"
+            android:icon="@drawable/ic_editar"
+            android:title="@string/menu_escribir" />
+        <item
+            android:id="@+id/menuOpciones"
+            android:icon="@drawable/ic_opciones"
+            android:title="@string/menu_opciones" />
+        <item
+            android:id="@+id/menuAleatoria"
+            android:icon="@drawable/ic_aleatoria"
+            android:title="@string/menu_aleatoria" />
+    </group>
+</menu>

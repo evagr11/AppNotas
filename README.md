@@ -4,10 +4,11 @@
 
 <div align="center">
   <a href="https://github.com/evagr11/AppNotas" target="_blank"><img src="https://img.shields.io/badge/Ver_Código-713F12?style=for-the-badge&logo=github&logoColor=white" alt="Ver Código"></a>
+  <a href="https://www.figma.com/design/bGd0hNjlE58MXFdRMzW3rc/NOTAS" target="_blank"><img src="https://img.shields.io/badge/Figma-CA8A04?style=for-the-badge&logo=figma&logoColor=white" alt="Figma"></a>
 </div>
 
 <div align="center">
-  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&size=18&duration=3500&pause=800&color=CA8A04&center=true&vCenter=true&width=600&lines=Android+nativo+con+Java%3BBienvenida+por+pasos+con+Fragments%3BNotas+de+colores+con+filtro+por+Chips%3BGuardado+en+el+almacenamiento+interno" alt="Typing SVG" /></a>
+  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&size=18&duration=3500&pause=800&color=CA8A04&center=true&vCenter=true&width=600&lines=Android+nativo+con+Java%3BBienvenida+por+pasos+con+Fragments%3BNotas+de+colores+con+filtro+por+Chips%3BMen%C3%BA+lateral%2C+opciones+y+nota+aleatoria" alt="Typing SVG" /></a>
 </div>
 
 # 🚀 Sobre el Proyecto
@@ -23,27 +24,30 @@ Todo se guarda en el **almacenamiento interno** del móvil, sin internet ni base
 *   🎨 **7 colores y filtro por Chips:** Cada nota tiene su color de fondo y la lista se puede filtrar marcando uno o varios colores a la vez.
 *   💾 **Persistencia en ficheros:** Cada nota se guarda como `notaN.not` y los datos del usuario como `datos.cas` dentro de la carpeta privada de la app (`getFilesDir()`), así que sobreviven al cerrar la aplicación.
 *   🔐 **Datos del usuario ocultos:** El nombre, la contraseña y la fecha se guardan aplicando un desplazamiento de caracteres (cada letra pasa a la siguiente), para que no queden legibles a simple vista en el fichero.
+*   ☰ **Menú lateral:** Un `NavigationView` con tu nombre y accesos a **Escribir nota**, **Opciones** y **Nota aleatoria**.
+*   ⚙️ **Opciones:** Cambiar el nombre de usuario sin tocar las notas, eliminar todas las notas o reiniciar la app a su estado inicial. Las acciones que no se pueden deshacer piden confirmación.
+*   🎲 **Nota aleatoria:** Muestra una de tus notas al azar con su color, con botones para ver otra o editarla.
 *   🌙 **Modo oscuro:** Tema propio para el modo noche.
 
-### 🎨 Colores de las notas
+### 🎨 Colores de las notas (tonos pastel)
 
 <div align="center">
 
 | Chip | Color |
 | :--: | :---: |
 | 1 | <img src="https://img.shields.io/badge/-Blanco-FFFFFF?style=for-the-badge" alt="Blanco #FFFFFF"/> |
-| 2 | <img src="https://img.shields.io/badge/-Rojo-E53935?style=for-the-badge" alt="Rojo #E53935"/> |
-| 3 | <img src="https://img.shields.io/badge/-Morado-8E24AA?style=for-the-badge" alt="Morado #8E24AA"/> |
-| 4 | <img src="https://img.shields.io/badge/-Índigo-3949AB?style=for-the-badge" alt="Índigo #3949AB"/> |
-| 5 | <img src="https://img.shields.io/badge/-Azul-1E88E5?style=for-the-badge" alt="Azul #1E88E5"/> |
-| 6 | <img src="https://img.shields.io/badge/-Verde-43A047?style=for-the-badge" alt="Verde #43A047"/> |
-| 7 | <img src="https://img.shields.io/badge/-Amarillo-FDD835?style=for-the-badge" alt="Amarillo #FDD835"/> |
+| 2 | <img src="https://img.shields.io/badge/-Rojo-F9C0C0?style=for-the-badge" alt="Rojo #F9C0C0"/> |
+| 3 | <img src="https://img.shields.io/badge/-Morado-DCC6F0?style=for-the-badge" alt="Morado #DCC6F0"/> |
+| 4 | <img src="https://img.shields.io/badge/-Índigo-C3CBF3?style=for-the-badge" alt="Índigo #C3CBF3"/> |
+| 5 | <img src="https://img.shields.io/badge/-Azul-BFE0F8?style=for-the-badge" alt="Azul #BFE0F8"/> |
+| 6 | <img src="https://img.shields.io/badge/-Verde-C8E8C2?style=for-the-badge" alt="Verde #C8E8C2"/> |
+| 7 | <img src="https://img.shields.io/badge/-Amarillo-FFF0A6?style=for-the-badge" alt="Amarillo #FFF0A6"/> |
 
 </div>
 
 # 🧠 Contexto del Proyecto
 
-Este proyecto se desarrolló durante el segundo curso del ciclo formativo de **Desarrollo de Aplicaciones Multiplataforma (DAM)**, en las asignaturas de **Desarrollo de Interfaces** y **Programación Multimedia y Dispositivos Móviles**. El objetivo era practicar el desarrollo nativo en Android con Java: varias pantallas con `Activities` y `Fragments`, listas con adaptadores propios, componentes de Material Design y guardado de datos en ficheros.
+Este proyecto se desarrolló en el ciclo formativo de **Desarrollo de Aplicaciones Multiplataforma (DAM)**, en las asignaturas de **Desarrollo de Interfaces** y **Programación Multimedia y Dispositivos Móviles**. El objetivo era practicar el desarrollo nativo en Android con Java: varias pantallas con `Activities` y `Fragments`, listas con adaptadores propios, componentes de Material Design y guardado de datos en ficheros.
 
 # 🛠️ Stack Tecnológico
 
@@ -84,16 +88,19 @@ AppNotas/
 │       │   │   ├── ColorNota.java         # Colores disponibles
 │       │   │   └── Usuario.java           # Nombre, contraseña y fecha de nacimiento
 │       │   ├── ViewModel/
-│       │   │   ├── LandingViewModel.java  # Guarda y lee el usuario
-│       │   │   └── NotaManager.java       # Crea y actualiza los ficheros de las notas
+│       │   │   ├── LandingViewModel.java  # Guarda, lee y cambia el nombre del usuario
+│       │   │   └── NotaManager.java       # Lee, crea, actualiza y borra los ficheros de las notas
 │       │   └── View/
 │       │       ├── Landing/               # Bienvenida: Activity y 4 Fragments
-│       │       ├── GeneralActivity.java   # Lista de notas y filtro por color
+│       │       ├── GeneralActivity.java   # Lista de notas, filtro por color y menú lateral
 │       │       ├── CrearNotasActivity.java# Crear y editar una nota
+│       │       ├── OpcionesActivity.java  # Cambiar nombre, borrar notas y reiniciar
+│       │       ├── NotaAleatoriaActivity.java # Una nota al azar
 │       │       └── NotaAdapter.java       # Pinta cada nota con su color
 │       └── res/
-│           ├── layout/                    # Pantallas y fila de la lista
-│           ├── drawable/                  # Fondos redondeados de cada color
+│           ├── layout/                    # Pantallas, cabeceras, diálogo y fila de la lista
+│           ├── menu/                      # Opciones del menú lateral
+│           ├── drawable/                  # Fondos de cada color e iconos del menú
 │           ├── values/                    # Colores, textos y tema
 │           └── values-night/              # Tema oscuro
 ├── build.gradle.kts
@@ -112,7 +119,7 @@ Para ejecutarlo necesitas **Android Studio** y el **JDK 11** o superior.
 3.  **Sincroniza Gradle** y espera a que se descarguen las dependencias.
 4.  **Ejecuta la aplicación** en un emulador o en un móvil con el botón `Run 'app'`.
 
-La primera vez verás la bienvenida; para volver a verla, borra los datos de la app desde los ajustes del móvil.
+La primera vez verás la bienvenida; para volver a verla, usa **Opciones → Reiniciar la app**.
 
 # 🎯 Mejoras futuras
 

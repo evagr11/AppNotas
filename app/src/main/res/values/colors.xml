@@ -7,12 +7,17 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="Color1">#FFFFFFFF</color>
-    <color name="Color2">#E53935</color>
-    <color name="Color3">#8E24AA</color>
-    <color name="Color4">#3949AB</color>
-    <color name="Color5">#1E88E5</color>
-    <color name="Color6">#43A047</color>
-    <color name="Color7">#FDD835</color>
-    <color name="Color8">#FB8C00</color>
+    <!-- Colores de las notas en tonos pastel -->
+    <color name="Color1">#FFFFFF</color>
+    <color name="Color2">#F9C0C0</color>
+    <color name="Color3">#DCC6F0</color>
+    <color name="Color4">#C3CBF3</color>
+    <color name="Color5">#BFE0F8</color>
+    <color name="Color6">#C8E8C2</color>
+    <color name="Color7">#FFF0A6</color>
+    <color name="Color8">#FFD8B0</color>
+    <color name="fondo_icono">#B6DC91</color>
+    <color name="verde_notas">#6E936B</color>
+    <color name="verde_oscuro_notas">#3F5A3D</color>
+    <color name="verde_claro_notas">#E6EFE0</color>
 </resources>

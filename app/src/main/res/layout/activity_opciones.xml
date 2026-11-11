@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F1E3"
+    android:orientation="vertical"
+    tools:context=".View.OpcionesActivity">
+
+    <include
+        android:id="@+id/cabecera"
+        layout="@layout/cabecera_pantalla" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Cambiar nombre -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCambiarNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/opciones_cambiar_nombre" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/opciones_cambiar_nombre_info"
+                android:textColor="#555555" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="#000000" />
+
+            <!-- Eliminar todas las notas -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEliminarNotas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/opciones_eliminar_notas" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/opciones_eliminar_notas_info"
+                android:textColor="#555555" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="#000000" />
+
+            <!-- Reiniciar la app -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnReiniciar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:backgroundTint="#B3261E"
+                android:text="@string/opciones_reiniciar" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/opciones_reiniciar_info"
+                android:textColor="#555555" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

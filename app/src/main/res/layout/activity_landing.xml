@@ -10,8 +10,13 @@
 
     <Button
         android:id="@+id/btnAcceder"
+        style="@style/BotonElevado"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
+        android:minWidth="188dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        app:icon="@drawable/ic_editar"
         android:text="Accede a tus notas"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,11 +25,24 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.841" />
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgTortuga"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:contentDescription="@string/tortuga"
+        android:src="@drawable/tortuga"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        app:shapeAppearanceOverlay="@style/ImagenRedonda" />
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerLanding"
         android:name="com.example.appnotas.View.Landing.LandingNombreFragment"
-        android:layout_width="430dp"
-        android:layout_height="912dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

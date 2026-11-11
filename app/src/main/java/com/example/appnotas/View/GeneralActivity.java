@@ -1,32 +1,31 @@
 package com.example.appnotas.View;
 
-import static java.security.AccessController.getContext;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
+import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.appnotas.Model.ColorNota;
 import com.example.appnotas.Model.Nota;
 import com.example.appnotas.Model.Usuario;
 import com.example.appnotas.R;
 import com.example.appnotas.ViewModel.LandingViewModel;
+import com.example.appnotas.ViewModel.NotaManager;
 import com.google.android.material.chip.Chip;
+import com.google.android.material.navigation.NavigationView;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class GeneralActivity extends AppCompatActivity {
 
@@ -37,7 +36,9 @@ public class GeneralActivity extends AppCompatActivity {
     private ArrayList<Nota> listaFiltrada = new ArrayList<>();
     private NotaAdapter adapter;
 
-    private Button button;
+    private DrawerLayout drawerLayout;
+    private NavigationView menuLateral;
+    private ImageButton btnMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,29 +62,64 @@ public class GeneralActivity extends AppCompatActivity {
         noNotas = findViewById(R.id.textView3);
         saludo = findViewById(R.id.textView5);
         listView = findViewById(R.id.listView);
-        button = findViewById(R.id.button);
+        drawerLayout = findViewById(R.id.drawerLayout);
+        menuLateral = findViewById(R.id.menuLateral);
+        btnMenu = findViewById(R.id.btnMenu);
 
         adapter = new NotaAdapter(this, listaFiltrada);
         listView.setAdapter(adapter);
 
-        button.setOnClickListener(v ->{
-            startActivity(new Intent(GeneralActivity.this, CrearNotasActivity.class));
-            finish();
-        });
-
         LandingViewModel viewModel = new LandingViewModel();
         Usuario usuario = viewModel.leerUsuario(this);
+        String textoSaludo = getString(R.string.saludo, usuario.getNombre());
+        saludo.setText(textoSaludo);
 
-        saludo.setText("Hola, " + usuario.getNombre());
+        configurarMenuLateral(textoSaludo);
 
         cargarNotasDesdeArchivos();
 
         filtrado();
 
         edicion();
-
     }
 
+    // Menú lateral (diseño de Figma): Escribir nota, Opciones y Nota aleatoria
+    private void configurarMenuLateral(String textoSaludo) {
+        TextView saludoMenu = menuLateral.getHeaderView(0).findViewById(R.id.txtSaludoMenu);
+        saludoMenu.setText(textoSaludo);
+
+        btnMenu.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
+
+        menuLateral.setNavigationItemSelectedListener(item -> {
+            drawerLayout.closeDrawer(GravityCompat.START);
+            int id = item.getItemId();
+            if (id == R.id.menuEscribir) {
+                abrir(CrearNotasActivity.class);
+            } else if (id == R.id.menuOpciones) {
+                abrir(OpcionesActivity.class);
+            } else if (id == R.id.menuAleatoria) {
+                abrir(NotaAleatoriaActivity.class);
+            }
+            return true;
+        });
+
+        // Si el menú está abierto, el botón atrás lo cierra en vez de salir de la app
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else {
+                    finish();
+                }
+            }
+        });
+    }
+
+    private void abrir(Class<?> pantalla) {
+        startActivity(new Intent(GeneralActivity.this, pantalla));
+        finish();
+    }
 
     private void filtrado(){
         chip1.setOnCheckedChangeListener((b, c) -> filtrar());
@@ -113,59 +149,12 @@ public class GeneralActivity extends AppCompatActivity {
         listaNotas.clear();
         listaFiltrada.clear();
 
-        File carpeta = new File(getFilesDir(), "USUARIO");
-        // Solo los ficheros de notas (.not); en la carpeta también está datos.cas con el usuario
-        File[] archivos = carpeta.listFiles((dir, nombre) -> nombre.endsWith(".not"));
+        listaNotas.addAll(new NotaManager(this).leerNotas());
+        listaFiltrada.addAll(listaNotas);
+        adapter.notifyDataSetChanged();
 
-        if (archivos != null) {
-            for (int i = 0; i < archivos.length; i++) {
-                File archivo = archivos[i];
-                try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
-                    String linea = br.readLine();
-
-                    String[] partes = linea.split("\\|");
-
-                    String titulo = partes[0].trim();
-                    String descripcion = partes[1].trim().replace("\\n", "\n");
-                    String colorStr = partes[2].trim();
-                    int id = Integer.parseInt(partes[3].trim());
-
-                    ColorNota color;
-
-                    switch (colorStr) {
-                        case "Color1": color = ColorNota.Color1;
-                            break;
-                        case "Color2": color = ColorNota.Color2;
-                            break;
-                        case "Color3": color = ColorNota.Color3;
-                            break;
-                        case "Color4": color = ColorNota.Color4;
-                            break;
-                        case "Color5": color = ColorNota.Color5;
-                            break;
-                        case "Color6": color = ColorNota.Color6;
-                            break;
-                        case "Color7": color = ColorNota.Color7;
-                            break;
-                        case "Color8": color = ColorNota.Color8;
-                            break;
-                        default: throw new Exception("");
-                    }
-
-                    listaNotas.add(new Nota(id, titulo, descripcion, color));
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            Collections.reverse(listaNotas);
-            listaFiltrada.addAll(listaNotas);
-            adapter.notifyDataSetChanged();
-        }
         noNotas.setVisibility(listaFiltrada.isEmpty() ? View.VISIBLE : View.GONE);
     }
-
 
     private void filtrar() {
 
@@ -202,14 +191,8 @@ public class GeneralActivity extends AppCompatActivity {
 
         }
 
-        if(listaFiltrada.isEmpty()){
-            noNotas.setVisibility(View.VISIBLE);
-        } else{
-            noNotas.setVisibility(View.GONE);
-        }
+        noNotas.setVisibility(listaFiltrada.isEmpty() ? View.VISIBLE : View.GONE);
 
         adapter.notifyDataSetChanged();
     }
-
-
 }

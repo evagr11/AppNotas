@@ -1,3 +1,45 @@
 <resources>
     <string name="app_name">AppNotas</string>
+    <string name="tortuga">Tortuga, la mascota de la app</string>
+    <string name="registro_completado">Registro completado con éxito</string>
+
+    <!-- Menú lateral -->
+    <string name="saludo_usuario">Hola, Usuario</string>
+    <string name="saludo">Hola, %1$s</string>
+    <string name="menu_abrir">Abrir el menú</string>
+    <string name="menu_escribir">Escribir nota</string>
+    <string name="menu_opciones">Opciones</string>
+    <string name="menu_aleatoria">Nota aleatoria</string>
+    <string name="volver_inicio">Volver a mis notas</string>
+
+    <!-- Crear nota -->
+    <string name="hint_titulo">Título</string>
+    <string name="hint_texto">Escribe tu nota…</string>
+    <string name="guardar">Guardar</string>
+    <string name="editar_nota">Editar nota</string>
+
+    <!-- Opciones -->
+    <string name="opciones_cambiar_nombre">Cambiar nombre</string>
+    <string name="opciones_cambiar_nombre_info">Esta opción no afecta a tus notas, solo cambiará tu nombre de usuario.</string>
+    <string name="opciones_eliminar_notas">Eliminar todas las notas</string>
+    <string name="opciones_eliminar_notas_info">Esta opción eliminará todas tus notas de manera permanente, sin posibilidad de deshacerlo.</string>
+    <string name="opciones_reiniciar">Reiniciar la app</string>
+    <string name="opciones_reiniciar_info">Esta opción eliminará todos tus datos y dejará la app en su estado inicial, borrando tu información y tus notas.</string>
+    <string name="dialogo_nombre_titulo">Introduzca sus datos</string>
+    <string name="dialogo_nombre_hint">Nombre</string>
+    <string name="dialogo_nombre_vacio">El nombre no puede estar vacío</string>
+    <string name="dialogo_nombre_ok">Tu nombre se ha cambiado correctamente</string>
+    <string name="dialogo_eliminar_mensaje">Pulsa el botón para eliminar TODAS tus notas de manera PERMANENTE.</string>
+    <string name="dialogo_eliminar_ok">Tus notas se han eliminado correctamente</string>
+    <string name="dialogo_reiniciar_mensaje">Pulsa el botón para reiniciar la app a su estado inicial. Esto eliminará TODOS tus datos.</string>
+    <string name="dialogo_reiniciar_ok">La app se ha reiniciado correctamente</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="reiniciar">Reiniciar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="aceptar">Aceptar</string>
+
+    <!-- Nota aleatoria -->
+    <string name="aleatoria_otra">Otra nota</string>
+    <string name="aleatoria_editar">Editar</string>
+    <string name="aleatoria_sin_notas">Todavía no tienes notas. Escribe una desde el menú.</string>
 </resources>

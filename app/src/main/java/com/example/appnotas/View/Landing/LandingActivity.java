@@ -53,6 +53,8 @@ public class LandingActivity extends AppCompatActivity {
             } else {
                 Intent intent = new Intent(LandingActivity.this, GeneralActivity.class);
                 startActivity(intent);
+                // Se cierra la bienvenida para que el botón atrás no vuelva a ella
+                finish();
             }
         });
     }
