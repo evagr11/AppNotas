@@ -16,14 +16,29 @@ import android.widget.Toast;
 import com.example.appnotas.R;
 import com.example.appnotas.ViewModel.LandingViewModel;
 
+/**
+ * Último paso del registro: pide el año de nacimiento y guarda el usuario.
+ */
 public class LandingFechaFragment extends Fragment {
 
     private LandingViewModel viewModel;
 
+    /**
+     * @param viewModel datos del registro que vienen de los pasos anteriores
+     */
     public LandingFechaFragment(LandingViewModel viewModel) {
         this.viewModel = viewModel;
     }
 
+    /**
+     * Comprueba el año, guarda el usuario, marca que ya no es la primera vez
+     * y pasa a {@link LandingFinalFragment}.
+     *
+     * @param inflater           inflador de vistas
+     * @param container          contenedor del Fragment
+     * @param savedInstanceState estado guardado
+     * @return la vista del Fragment
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

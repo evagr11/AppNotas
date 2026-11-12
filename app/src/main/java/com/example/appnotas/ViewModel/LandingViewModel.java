@@ -12,19 +12,41 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Guarda y lee los datos del usuario de la bienvenida.
+ *
+ * <p>Lo comparten los tres Fragments de la bienvenida. Los datos se escriben en
+ * {@code USUARIO/datos.cas} con un desplazamiento de caracteres para que no se
+ * lean a simple vista (no es un cifrado seguro).</p>
+ */
 public class LandingViewModel {
     private Usuario usuario = new Usuario();
 
+    /**
+     * @param nombre nombre escrito en el primer paso
+     */
     public void setNombre(String nombre) {
         usuario.setNombre(nombre);
     }
+    /**
+     * @param contrasena contraseña escrita en el segundo paso
+     */
     public void setContrasena(String contrasena) {
         usuario.setContrasena(contrasena);
     }
+    /**
+     * @param fecha año de nacimiento escrito en el último paso
+     */
     public void setFechaNacimiento(String fecha) {
         usuario.setFechaNacimiento(fecha);
     }
 
+    /**
+     * Desplaza cada carácter una posición hacia delante.
+     *
+     * @param texto texto original
+     * @return texto desplazado
+     */
     public String cifrar(String texto){
         char[] letras = texto.toCharArray();
         String resultado = "";
@@ -36,6 +58,11 @@ public class LandingViewModel {
         return resultado;
     }
 
+    /**
+     * Escribe el nombre, la contraseña y la fecha, desplazados, en {@code USUARIO/datos.cas}.
+     *
+     * @param context contexto para llegar a la carpeta privada de la app
+     */
     public void guardarUsuario(Context context) {
         String nombreCifrado = cifrar(usuario.getNombre());
         String contrasenaCifrada = cifrar(usuario.getContrasena());
@@ -60,6 +87,12 @@ public class LandingViewModel {
         }
     }
 
+    /**
+     * Lee {@code datos.cas} y devuelve un usuario con el nombre ya descifrado.
+     *
+     * @param context contexto para llegar a la carpeta privada de la app
+     * @return el usuario leído (vacío si no hay fichero)
+     */
     public Usuario leerUsuario(Context context) {
         File carpeta = new File(context.getFilesDir(), "USUARIO");
         File archivo = new File(carpeta, "datos.cas");
@@ -82,6 +115,12 @@ public class LandingViewModel {
         return usuario;
     }
 
+    /**
+     * Deshace {@link #cifrar(String)}: desplaza cada carácter una posición hacia atrás.
+     *
+     * @param texto texto desplazado
+     * @return texto original
+     */
     private String descifrar(String texto) {
         char[] letras = texto.toCharArray();
         String resultado = "";
@@ -93,6 +132,13 @@ public class LandingViewModel {
     }
 
     // Cambia solo el nombre: la contraseña y la fecha se quedan como estaban en datos.cas
+    /**
+     * Cambia solo el nombre en {@code datos.cas}, sin tocar la contraseña ni la fecha.
+     *
+     * @param context     contexto para llegar a la carpeta privada de la app
+     * @param nuevoNombre nombre nuevo
+     * @return {@code true} si se ha guardado bien
+     */
     public boolean cambiarNombre(Context context, String nuevoNombre) {
         File archivo = new File(new File(context.getFilesDir(), "USUARIO"), "datos.cas");
         StringBuilder datos = new StringBuilder();

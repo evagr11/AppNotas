@@ -13,14 +13,28 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Crea, edita, lee y borra las notas guardadas en ficheros.
+ *
+ * <p>Cada nota es un fichero {@code notaN.not} dentro de la carpeta
+ * {@code USUARIO} del almacenamiento interno, junto a {@code datos.cas}.</p>
+ */
 public class NotaManager {
 
     private Context ct;
 
+    /**
+     * @param ct contexto para llegar a la carpeta privada de la app
+     */
     public NotaManager(Context ct){
         this.ct = ct;
     }
 
+    /**
+     * Guarda una nota nueva con el siguiente id libre.
+     *
+     * @param nota nota con título, descripción y color (su id se ignora)
+     */
     public void guardarNota(Nota nota){
         try{
             File carpeta = new File(ct.getFilesDir(), "USUARIO");
@@ -39,6 +53,11 @@ public class NotaManager {
         }
     }
 
+    /**
+     * Sobrescribe el fichero de una nota que ya existe.
+     *
+     * @param nota nota editada, con su id original
+     */
     public void actualizarNota(Nota nota){
         try{
             File carpeta = new File(ct.getFilesDir(), "USUARIO");
@@ -55,6 +74,10 @@ public class NotaManager {
     }
 
     // El id de una nota nueva es el mayor id que ya exista más uno (nota1.not, nota2.not...)
+    /**
+     * @param carpeta carpeta de las notas (se crea si no existe)
+     * @return el mayor id que ya existe más uno
+     */
     private int obtenerSiguienteId(File carpeta){
         if (!carpeta.exists()) carpeta.mkdir();
         File[] archivos = carpeta.listFiles((dir, nombre) -> nombre.startsWith("nota") && nombre.endsWith(".not"));
@@ -73,6 +96,11 @@ public class NotaManager {
     }
 
     // Lee todas las notas guardadas (ficheros .not), de la más nueva a la más antigua
+    /**
+     * Lee todos los ficheros {@code .not}, saltándose los que tengan un formato inesperado.
+     *
+     * @return las notas ordenadas de la más nueva a la más antigua
+     */
     public ArrayList<Nota> leerNotas() {
         ArrayList<Nota> notas = new ArrayList<>();
         File carpeta = new File(ct.getFilesDir(), "USUARIO");
@@ -104,6 +132,9 @@ public class NotaManager {
     }
 
     // Borra todas las notas, pero deja los datos del usuario (datos.cas)
+    /**
+     * Borra todas las notas, pero deja los datos del usuario.
+     */
     public void borrarTodasLasNotas() {
         File carpeta = new File(ct.getFilesDir(), "USUARIO");
         File[] archivos = carpeta.listFiles((dir, nombre) -> nombre.endsWith(".not"));
@@ -114,6 +145,9 @@ public class NotaManager {
     }
 
     // Borra las notas y los datos del usuario: la app vuelve a su estado inicial
+    /**
+     * Borra las notas, los datos del usuario y la carpeta, para volver al estado inicial.
+     */
     public void borrarTodo() {
         File carpeta = new File(ct.getFilesDir(), "USUARIO");
         File[] archivos = carpeta.listFiles();

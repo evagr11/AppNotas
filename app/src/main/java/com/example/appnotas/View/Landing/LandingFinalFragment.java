@@ -15,12 +15,26 @@ import android.widget.Button;
 import com.example.appnotas.R;
 import com.example.appnotas.View.GeneralActivity;
 
+/**
+ * Pantalla de registro completado; a los 3 segundos abre las notas.
+ */
 public class LandingFinalFragment extends Fragment {
 
+    /**
+     * Constructor vacío que necesita Android para crear el Fragment.
+     */
     public LandingFinalFragment() {
         // Required empty public constructor
     }
 
+    /**
+     * Infla la pantalla y programa el paso a {@code GeneralActivity}.
+     *
+     * @param inflater           inflador de vistas
+     * @param container          contenedor del Fragment
+     * @param savedInstanceState estado guardado
+     * @return la vista del Fragment
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

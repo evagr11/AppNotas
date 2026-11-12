@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.example.appnotas.Model"},{"l":"com.example.appnotas.View"},{"l":"com.example.appnotas.View.Landing"},{"l":"com.example.appnotas.ViewModel"}];updateSearchResults();

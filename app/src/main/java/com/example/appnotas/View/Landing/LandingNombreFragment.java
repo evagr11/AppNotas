@@ -15,14 +15,28 @@ import android.widget.Toast;
 import com.example.appnotas.R;
 import com.example.appnotas.ViewModel.LandingViewModel;
 
+/**
+ * Primer paso del registro: pide el nombre.
+ */
 public class LandingNombreFragment extends Fragment {
 
     private LandingViewModel viewModel = new LandingViewModel();
 
+    /**
+     * Constructor vacío; crea el {@link com.example.appnotas.ViewModel.LandingViewModel} que se pasa a los siguientes pasos.
+     */
     public LandingNombreFragment() {
         // Required empty public constructor
     }
 
+    /**
+     * Comprueba que el nombre no esté vacío y pasa a {@link LandingContrasenaFragment}.
+     *
+     * @param inflater           inflador de vistas
+     * @param container          contenedor del Fragment
+     * @param savedInstanceState estado guardado
+     * @return la vista del Fragment
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

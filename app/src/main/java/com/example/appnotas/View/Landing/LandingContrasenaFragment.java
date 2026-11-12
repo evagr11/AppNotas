@@ -15,14 +15,28 @@ import android.widget.Toast;
 import com.example.appnotas.R;
 import com.example.appnotas.ViewModel.LandingViewModel;
 
+/**
+ * Segundo paso del registro: pide la contraseña.
+ */
 public class LandingContrasenaFragment extends Fragment {
 
     private LandingViewModel viewModel;
 
+    /**
+     * @param viewModel datos del registro que vienen del paso anterior
+     */
     public LandingContrasenaFragment(LandingViewModel viewModel) {
         this.viewModel = viewModel;
     }
 
+    /**
+     * Comprueba que la contraseña no esté vacía y pasa a {@link LandingFechaFragment}.
+     *
+     * @param inflater           inflador de vistas
+     * @param container          contenedor del Fragment
+     * @param savedInstanceState estado guardado
+     * @return la vista del Fragment
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

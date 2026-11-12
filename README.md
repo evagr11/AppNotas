@@ -5,6 +5,7 @@
 <div align="center">
   <a href="https://github.com/evagr11/AppNotas/releases/latest" target="_blank"><img src="https://img.shields.io/badge/Descargar_APK-CA8A04?style=for-the-badge&logo=android&logoColor=white" alt="Descargar APK"></a>
   <a href="https://github.com/evagr11/AppNotas" target="_blank"><img src="https://img.shields.io/badge/Ver_Código-713F12?style=for-the-badge&logo=github&logoColor=white" alt="Ver Código"></a>
+  <a href="https://evagr11.github.io/AppNotas/javadoc/" target="_blank"><img src="https://img.shields.io/badge/Javadoc-713F12?style=for-the-badge&logo=openjdk&logoColor=white" alt="Javadoc"></a>
   <a href="https://www.figma.com/design/bGd0hNjlE58MXFdRMzW3rc/NOTAS" target="_blank"><img src="https://img.shields.io/badge/Figma-CA8A04?style=for-the-badge&logo=figma&logoColor=white" alt="Figma"></a>
   <a href="docs/Documentacion_AppNotas.pdf" target="_blank"><img src="https://img.shields.io/badge/Documentación-713F12?style=for-the-badge&logo=latex&logoColor=white" alt="Documentación"></a>
   <a href="https://evagr11.github.io/Curriculum/proyectos/app-notas.html" target="_blank"><img src="https://img.shields.io/badge/Ver_Web-CA8A04?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Ver Web"></a>
@@ -130,7 +131,8 @@ AppNotas/
 │           ├── values/                    # Colores, textos, tema y estilos de botones
 │           └── values-night/              # Tema para el modo noche
 ├── docs/
-│   └── Documentacion_AppNotas.pdf         # Documentación técnica en LaTeX
+│   ├── Documentacion_AppNotas.pdf         # Documentación técnica en LaTeX
+│   └── javadoc/                           # Javadoc generado (publicado en GitHub Pages)
 ├── .github/readme/                        # Mockup y capturas de este README
 ├── build.gradle.kts
 └── gradlew

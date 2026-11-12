@@ -31,6 +31,11 @@ public class NotaAleatoriaActivity extends AppCompatActivity {
     private View contenedorNota, botones;
     private TextView txtTitulo, txtTexto, txtSinNotas;
 
+    /**
+     * Carga las notas, enseña una al azar y prepara los botones.
+     *
+     * @param savedInstanceState estado guardado de la Activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +67,9 @@ public class NotaAleatoriaActivity extends AppCompatActivity {
         mostrarNotaAleatoria();
     }
 
+    /**
+     * Elige una nota al azar, distinta de la actual si hay más de una, o avisa si no hay notas.
+     */
     private void mostrarNotaAleatoria() {
         if (notas.isEmpty()) {
             contenedorNota.setVisibility(View.GONE);
@@ -82,6 +90,9 @@ public class NotaAleatoriaActivity extends AppCompatActivity {
         contenedorNota.setBackgroundResource(NotaAdapter.fondoDe(notaActual.getColor()));
     }
 
+    /**
+     * Abre la nota que se está viendo en el formulario de edición.
+     */
     private void editarNota() {
         if (notaActual == null) return;
         Intent intent = new Intent(NotaAleatoriaActivity.this, CrearNotasActivity.class);

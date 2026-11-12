@@ -17,14 +17,31 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.appnotas.View.GeneralActivity;
 import com.example.appnotas.R;
 
+/**
+ * Pantalla de bienvenida con la tortuga.
+ *
+ * <p>La primera vez abre el registro por pasos; las siguientes, entra
+ * directamente a las notas.</p>
+ */
 public class LandingActivity extends AppCompatActivity {
+    /**
+     * Nombre del fichero de preferencias de la app.
+     */
     public static final String PREFS_APP = "PreferenciasApp";
+    /**
+     * Clave que indica si todavía no se ha hecho el registro.
+     */
     public static final String KEY_PRIMERA_VEZ = "esPrimeraVez";
 
 
     private Button btnAcceder;
     private FragmentContainerView fragmentContainerLanding;
 
+    /**
+     * Prepara el botón de acceso.
+     *
+     * @param savedInstanceState estado guardado de la Activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +76,9 @@ public class LandingActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * @return {@code true} si el usuario aún no ha terminado el registro
+     */
     private boolean esPrimeraVez(){
         SharedPreferences prefs = getSharedPreferences(PREFS_APP, MODE_PRIVATE);
         boolean esPrimeraVez = prefs.getBoolean(KEY_PRIMERA_VEZ, true);

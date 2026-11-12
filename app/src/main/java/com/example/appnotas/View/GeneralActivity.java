@@ -27,6 +27,9 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
+/**
+ * Pantalla principal: saludo, lista de notas, filtro por colores y menú lateral.
+ */
 public class GeneralActivity extends AppCompatActivity {
 
     private Chip chip1, chip2, chip3, chip4, chip5, chip6, chip7;
@@ -40,6 +43,11 @@ public class GeneralActivity extends AppCompatActivity {
     private NavigationView menuLateral;
     private ImageButton btnMenu;
 
+    /**
+     * Carga el nombre del usuario y sus notas y prepara el filtro, la edición y el menú lateral.
+     *
+     * @param savedInstanceState estado guardado de la Activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +92,11 @@ public class GeneralActivity extends AppCompatActivity {
     }
 
     // Menú lateral (diseño de Figma): Escribir nota, Opciones y Nota aleatoria
+    /**
+     * Pone el saludo en la cabecera del menú lateral y abre la pantalla elegida.
+     *
+     * @param textoSaludo saludo con el nombre del usuario
+     */
     private void configurarMenuLateral(String textoSaludo) {
         TextView saludoMenu = menuLateral.getHeaderView(0).findViewById(R.id.txtSaludoMenu);
         saludoMenu.setText(textoSaludo);
@@ -116,11 +129,19 @@ public class GeneralActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Abre otra pantalla y cierra esta.
+     *
+     * @param pantalla clase de la Activity que se abre
+     */
     private void abrir(Class<?> pantalla) {
         startActivity(new Intent(GeneralActivity.this, pantalla));
         finish();
     }
 
+    /**
+     * Vuelve a filtrar la lista cada vez que se marca o desmarca un Chip de color.
+     */
     private void filtrado(){
         chip1.setOnCheckedChangeListener((b, c) -> filtrar());
         chip2.setOnCheckedChangeListener((b, c) -> filtrar());
@@ -131,6 +152,9 @@ public class GeneralActivity extends AppCompatActivity {
         chip7.setOnCheckedChangeListener((b, c) -> filtrar());
     }
 
+    /**
+     * Al pulsar una nota, la abre en {@link CrearNotasActivity} para editarla.
+     */
     private void edicion() {
         listView.setOnItemClickListener((parent, view, position, id) -> {
             Nota seleccionada = listaFiltrada.get(position);
@@ -145,6 +169,9 @@ public class GeneralActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Lee las notas guardadas y enseña el aviso si no hay ninguna.
+     */
     private void cargarNotasDesdeArchivos() {
         listaNotas.clear();
         listaFiltrada.clear();
@@ -156,6 +183,10 @@ public class GeneralActivity extends AppCompatActivity {
         noNotas.setVisibility(listaFiltrada.isEmpty() ? View.VISIBLE : View.GONE);
     }
 
+    /**
+     * Deja en la lista las notas de los colores marcados.
+     * Si no hay ninguno marcado, o están todos, se ven todas.
+     */
     private void filtrar() {
 
         boolean filtroColor1 = chip1.isChecked();

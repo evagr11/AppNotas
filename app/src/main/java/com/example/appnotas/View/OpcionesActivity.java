@@ -27,6 +27,11 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
  */
 public class OpcionesActivity extends AppCompatActivity {
 
+    /**
+     * Conecta las tres opciones y el botón de volver.
+     *
+     * @param savedInstanceState estado guardado de la Activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,11 +52,17 @@ public class OpcionesActivity extends AppCompatActivity {
         findViewById(R.id.btnReiniciar).setOnClickListener(v -> dialogoReiniciar());
     }
 
+    /**
+     * Vuelve a la pantalla principal.
+     */
     private void volverAInicio() {
         startActivity(new Intent(OpcionesActivity.this, GeneralActivity.class));
         finish();
     }
 
+    /**
+     * Diálogo para escribir un nombre nuevo; no se cierra si se deja vacío.
+     */
     private void dialogoCambiarNombre() {
         View vista = getLayoutInflater().inflate(R.layout.dialogo_nombre, null);
         EditText editNombre = vista.findViewById(R.id.editNuevoNombre);
@@ -79,6 +90,9 @@ public class OpcionesActivity extends AppCompatActivity {
         dialogo.show();
     }
 
+    /**
+     * Pide confirmación y borra todas las notas.
+     */
     private void dialogoEliminarNotas() {
         new MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.opciones_eliminar_notas)
@@ -91,6 +105,9 @@ public class OpcionesActivity extends AppCompatActivity {
                 .show();
     }
 
+    /**
+     * Pide confirmación antes de reiniciar la app.
+     */
     private void dialogoReiniciar() {
         new MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.opciones_reiniciar)
@@ -101,6 +118,9 @@ public class OpcionesActivity extends AppCompatActivity {
     }
 
     // Borra notas, usuario y preferencias, y vuelve a la bienvenida como la primera vez
+    /**
+     * Borra notas, usuario y preferencias, y vuelve a la bienvenida como la primera vez.
+     */
     private void reiniciarApp() {
         new NotaManager(this).borrarTodo();
         getSharedPreferences(LandingActivity.PREFS_APP, Context.MODE_PRIVATE).edit().clear().apply();
@@ -114,6 +134,11 @@ public class OpcionesActivity extends AppCompatActivity {
     }
 
     // Aviso con la tortuga, como en el diseño de Figma
+    /**
+     * Enseña un aviso con la tortuga, como en el diseño de Figma.
+     *
+     * @param mensaje id del texto del aviso
+     */
     private void avisoCorrecto(int mensaje) {
         View vista = getLayoutInflater().inflate(R.layout.dialogo_aviso, null);
         TextView texto = vista.findViewById(R.id.txtAviso);

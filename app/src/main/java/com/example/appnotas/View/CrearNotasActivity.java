@@ -20,6 +20,12 @@ import com.example.appnotas.R;
 import com.example.appnotas.ViewModel.NotaManager;
 import com.google.android.material.chip.Chip;
 
+/**
+ * Formulario para escribir una nota nueva o editar una existente.
+ *
+ * <p>Si el {@code Intent} trae un {@code id}, la pantalla pasa a modo edición
+ * y rellena el título, la descripción y el color.</p>
+ */
 public class CrearNotasActivity extends AppCompatActivity {
 
     private EditText txtTituloEdit, txtDescripcionEdit;
@@ -29,6 +35,11 @@ public class CrearNotasActivity extends AppCompatActivity {
     private int notaId = 0;
     private boolean esEdicion = false;
 
+    /**
+     * Conecta las vistas, rellena el formulario si es una edición y prepara los botones.
+     *
+     * @param savedInstanceState estado guardado de la Activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +97,10 @@ public class CrearNotasActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Comprueba que haya título o descripción, coge el color marcado y guarda
+     * o actualiza la nota con {@link com.example.appnotas.ViewModel.NotaManager}.
+     */
     private void guardarNota() {
         String titulo = txtTituloEdit.getText().toString().trim();
         String descripcion = txtDescripcionEdit.getText().toString().trim();
