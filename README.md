@@ -19,26 +19,26 @@
   <img src=".github/readme/Mockup.jpg" alt="Mockup de AppNotas: la bienvenida con la tortuga y tres móviles con la lista de notas, una nota aleatoria y las opciones" width="100%"/>
 </div>
 
-# 🚀 Sobre el Proyecto
+# Sobre el Proyecto
 
 **App Notas** es una aplicación Android nativa para tomar notas rápidas y organizarlas por colores. La primera vez que se abre, una bienvenida por pasos pide el nombre, una contraseña y el año de nacimiento; a partir de ahí la app saluda por tu nombre y te lleva directamente a tus notas, que puedes crear, editar y filtrar por color.
 
 Todo se guarda en el **almacenamiento interno** del móvil, sin internet ni base de datos: cada nota es un pequeño fichero de texto.
 
-✨ **Características principales:**
+**Características principales:**
 
-*   👋 **Bienvenida por pasos:** Tres `Fragments` (nombre, contraseña y fecha de nacimiento) que comparten los datos a través de un mismo objeto y validan que ningún campo quede vacío. Solo aparece la primera vez gracias a `SharedPreferences`.
-*   📝 **Crear y editar notas:** Título, descripción de varias líneas y un color a elegir. Al pulsar una nota de la lista se abre con sus datos para editarla.
-*   🎨 **7 colores y filtro por Chips:** Cada nota tiene su color de fondo y la lista se puede filtrar marcando uno o varios colores a la vez.
-*   💾 **Persistencia en ficheros:** Cada nota se guarda como `notaN.not` y los datos del usuario como `datos.cas` dentro de la carpeta privada de la app (`getFilesDir()`), así que sobreviven al cerrar la aplicación.
-*   🔐 **Datos del usuario ocultos:** El nombre, la contraseña y la fecha se guardan aplicando un desplazamiento de caracteres (cada letra pasa a la siguiente), para que no queden legibles a simple vista en el fichero.
-*   ☰ **Menú lateral:** Un `NavigationView` con tu nombre y accesos a **Escribir nota**, **Opciones** y **Nota aleatoria**.
-*   ⚙️ **Opciones:** Cambiar el nombre de usuario sin tocar las notas, eliminar todas las notas o reiniciar la app a su estado inicial. Las acciones que no se pueden deshacer piden confirmación.
-*   🎲 **Nota aleatoria:** Muestra una de tus notas al azar con su color, con botones para ver otra o editarla.
-*   🐢 **Una mascota:** La tortuga aparece en la bienvenida, en el menú lateral, en los avisos y como icono de la app.
-*   🟢 **Diseño de Figma:** Cabecera verde, fondo crema y botones con forma de píldora de Material 3.
+*   **Bienvenida por pasos:** Tres `Fragments` (nombre, contraseña y fecha de nacimiento) que comparten los datos a través de un mismo objeto y validan que ningún campo quede vacío. Solo aparece la primera vez gracias a `SharedPreferences`.
+*   **Crear y editar notas:** Título, descripción de varias líneas y un color a elegir. Al pulsar una nota de la lista se abre con sus datos para editarla.
+*   **7 colores y filtro por Chips:** Cada nota tiene su color de fondo y la lista se puede filtrar marcando uno o varios colores a la vez.
+*   **Persistencia en ficheros:** Cada nota se guarda como `notaN.not` y los datos del usuario como `datos.cas` dentro de la carpeta privada de la app (`getFilesDir()`), así que sobreviven al cerrar la aplicación.
+*   **Datos del usuario ocultos:** El nombre, la contraseña y la fecha se guardan aplicando un desplazamiento de caracteres (cada letra pasa a la siguiente), para que no queden legibles a simple vista en el fichero.
+*   **Menú lateral:** Un `NavigationView` con tu nombre y accesos a **Escribir nota**, **Opciones** y **Nota aleatoria**.
+*   **Opciones:** Cambiar el nombre de usuario sin tocar las notas, eliminar todas las notas o reiniciar la app a su estado inicial. Las acciones que no se pueden deshacer piden confirmación.
+*   **Nota aleatoria:** Muestra una de tus notas al azar con su color, con botones para ver otra o editarla.
+*   **Una mascota:** La tortuga aparece en la bienvenida, en el menú lateral, en los avisos y como icono de la app.
+*   **Diseño de Figma:** Cabecera verde, fondo crema y botones con forma de píldora de Material 3.
 
-### 🎨 Colores de las notas (tonos pastel)
+### Colores de las notas (tonos pastel)
 
 <div align="center">
 
@@ -54,7 +54,7 @@ Todo se guarda en el **almacenamiento interno** del móvil, sin internet ni base
 
 </div>
 
-### 📸 Galería
+### Galería
 
 | Bienvenida | Registro | Lista de notas | Filtro por color |
 | :--------: | :------: | :------------: | :--------------: |
@@ -66,11 +66,11 @@ Todo se guarda en el **almacenamiento interno** del móvil, sin internet ni base
 | <img src=".github/readme/06_crear_nota.png" alt="Formulario con título, texto y chips de color" width="180"/> | <img src=".github/readme/07_opciones.png" alt="Opciones: cambiar nombre, eliminar notas y reiniciar la app" width="180"/> | <img src=".github/readme/08_nota_aleatoria.png" alt="Una nota al azar con los botones Editar y Otra nota" width="180"/> | <img src=".github/readme/04_registro_completado.png" alt="Registro completado con éxito y la tortuga" width="180"/> |
 | *Título, texto y color.* | *Las acciones peligrosas piden confirmación.* | *Una nota al azar.* | *Y a tus notas.* |
 
-# 🧠 Contexto del Proyecto
+# Contexto del Proyecto
 
 Este proyecto se desarrolló en el ciclo formativo de **Desarrollo de Aplicaciones Multiplataforma (DAM)**, en las asignaturas de **Desarrollo de Interfaces** y **Programación Multimedia y Dispositivos Móviles**. El objetivo era practicar el desarrollo nativo en Android con Java: varias pantallas con `Activities` y `Fragments`, listas con adaptadores propios, componentes de Material Design y guardado de datos en ficheros.
 
-# 🛠️ Stack Tecnológico
+# Stack Tecnológico
 
 <div align="center">
   <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android">
@@ -98,7 +98,7 @@ Este proyecto se desarrolló en el ciclo formativo de **Desarrollo de Aplicacion
 
 </div>
 
-# 📂 Estructura del Proyecto
+# Estructura del Proyecto
 
 El código está separado en modelo, vista y una capa intermedia con la lógica, siguiendo una organización parecida a MVVM.
 
@@ -138,9 +138,9 @@ AppNotas/
 └── gradlew
 ```
 
-# 🚀 Cómo Utilizar el Proyecto
+# Cómo Utilizar el Proyecto
 
-### 📲 Instalar la APK
+### Instalar la APK
 
 La forma más rápida de probar la app es instalar la APK de la última versión, en [Releases](https://github.com/evagr11/AppNotas/releases/latest):
 
@@ -150,7 +150,7 @@ La forma más rápida de probar la app es instalar la APK de la última versión
 
 > Necesita **Android 7.0 (API 24)** o superior. Funciona sin conexión: las notas se guardan en el propio móvil.
 
-### 🧑‍💻 Compilar desde el código
+### Compilar desde el código
 
 Para ejecutarlo necesitas **Android Studio** y el **JDK 11** o superior.
 
@@ -163,15 +163,6 @@ Para ejecutarlo necesitas **Android Studio** y el **JDK 11** o superior.
 4.  **Ejecuta la aplicación** en un emulador o en un móvil con el botón `Run 'app'`.
 
 La primera vez verás la bienvenida; para volver a verla, usa **Opciones → Reiniciar la app**.
-
-# 🎯 Mejoras futuras
-
-- 🗑️ Borrar notas (por ejemplo, deslizando sobre ellas).
-- 🔐 Guardar la contraseña con un hash real (como SHA-256 con sal) en lugar del desplazamiento de caracteres.
-- 🗄️ Pasar el guardado de ficheros a **Room** y la lista a `RecyclerView`.
-- 🔄 Usar el `ViewModel` de Android Jetpack para que los datos sobrevivan al girar la pantalla.
-- 🌙 Un modo oscuro completo: ahora los fondos de las pantallas son siempre crema.
-- 🆔 Cambiar el identificador `com.example.appnotas` por uno propio.
 
 <br>
 
